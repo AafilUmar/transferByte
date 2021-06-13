@@ -6,8 +6,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.lazyengineer.transferbyte.pojoClass.ListItem
 
-class AdapterClass(private val dataSet:ArrayList<String>):
+class AdapterClass(private val dataSet:ArrayList<ListItem>,private val listner:MainActivity.onItemClickListener):
     RecyclerView.Adapter<AdapterClass.ViewHolder>() {
 
 
@@ -31,7 +32,12 @@ class AdapterClass(private val dataSet:ArrayList<String>):
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.textView.text=dataSet.get(position);
+        holder.textView.text=dataSet.get(position).mediaName
+       holder.itemView.setOnClickListener {
+           listner.onClick(position)
+       }
+
+
     }
 
     override fun getItemCount(): Int {
