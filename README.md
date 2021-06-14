@@ -1,7 +1,7 @@
 ## transferByte
 Simple app to Transfer Media and Text from computer to mobile.Written in kotlin.
 
-##Ktor Server
+## Ktor Server
 
 Ktor is an asynchronous kotlin framework for creating microservices.Used to create local server for sending files and text.
 
