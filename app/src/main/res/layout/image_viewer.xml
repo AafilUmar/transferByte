@@ -6,29 +6,30 @@
     >
     <ImageView
         android:layout_width="match_parent"
-        android:id="@+id/video_view"
+        android:id="@+id/image_view"
         android:layout_height="200dp"
+        android:background="#ffffff"
         android:layout_alignParentTop="true"
         />
     <Button
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:id="@+id/share_button"
+        android:id="@+id/image_share_button"
         android:layout_alignParentRight="true"
         android:layout_marginTop="20dp"
         android:layout_marginRight="30dp"
         android:background="@drawable/ic_baseline_share_24"
-        android:layout_below="@id/video_view"
+        android:layout_below="@id/image_view"
         />
     <Button
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:id="@+id/delete_button"
-        android:layout_toLeftOf="@id/share_button"
+        android:id="@+id/image_delete_button"
+        android:layout_toLeftOf="@id/image_share_button"
         android:layout_marginTop="20dp"
         android:layout_marginRight="30dp"
         android:background="@drawable/ic_baseline_delete_24"
-        android:layout_below="@id/video_view"
+        android:layout_below="@id/image_view"
         />
 
 </merge>
