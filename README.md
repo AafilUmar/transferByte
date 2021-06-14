@@ -1,5 +1,5 @@
-# transferByte
-Simple app to Transfer Media and Text from computer to mobile.
+## transferByte
+Simple app to Transfer Media and Text from computer to mobile.Written in kotlin.
 
 ##Ktor Server
 
