@@ -1,4 +1,4 @@
-## transferByte
+## TransferByte
 Simple app to Transfer Media and Text from computer to mobile.Written in kotlin.
 
 Recycler view used for listing the media posted and downloded
