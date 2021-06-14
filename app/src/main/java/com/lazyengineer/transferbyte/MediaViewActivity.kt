@@ -78,6 +78,13 @@ class MediaViewActivity : AppCompatActivity() {
             val text=text_view
             text.text=mediaVal
             text.movementMethod=ScrollingMovementMethod()
+            val share=text_share_button
+            share.setOnClickListener {
+                val shareIntent= Intent(Intent.ACTION_SEND)
+                shareIntent.setType("text/*")
+                shareIntent.putExtra(Intent.EXTRA_TEXT, mediaVal)
+                startActivity(shareIntent)
+            }
             val copy=copy_button
             copy.setOnClickListener{
                 val clipBoard:ClipboardManager= getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
