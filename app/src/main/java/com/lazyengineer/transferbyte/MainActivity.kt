@@ -214,39 +214,46 @@ class MainActivity : AppCompatActivity() {
                         val multipart=call.receiveMultipart()
                        // val file=call.receiveParameters()
                         //val fileName=file["name"]
-                        multipart.forEachPart { part->
-                            when(part){
-                                is PartData.FormItem -> {
-                                    val fileDescription = part.value
-                                }
-                                is PartData.FileItem -> {
-                                    val fileName = part.originalFileName as String
-                                    var fileBytes = part.streamProvider().readBytes()
-                                    val folder: File = File(
-                                        Environment.getExternalStorageDirectory()
-                                            .toString() + "/" + "TransferByte/Images"
-                                    )
-                                    Log.d("AKU", folder.path)
-                                    if (!folder.exists())
-                                        folder.mkdirs()
-
-                                    val file = File(folder, fileName)
-                                    if (!file.exists()) {
-                                        file.createNewFile()
+                        try {
+                            multipart.forEachPart { part ->
+                                when (part) {
+                                    is PartData.FormItem -> {
+                                        val fileDescription = part.value
                                     }
-                                    try {
-                                        file.writeBytes(fileBytes)
-                                        arrays!!.add(ListItem("Image", file.path))
-                                        updateList()
-                                    } catch (e: Exception) {
-                                        e.printStackTrace()
-                                    }
+                                    is PartData.FileItem -> {
+                                        val fileName = part.originalFileName as String
+                                        var fileBytes = part.streamProvider().readBytes()
+                                        val folder: File = File(
+                                            Environment.getExternalStorageDirectory()
+                                                .toString() + "/" + "TransferByte/Images"
+                                        )
+                                        Log.d("AKU", folder.path)
+                                        if (!folder.exists())
+                                            folder.mkdirs()
 
-                                    Log.d("AKU", "files" + file)
+                                        val file = File(folder, fileName)
+                                        if (!file.exists()) {
+                                            file.createNewFile()
+                                        }
+                                        try {
+                                            file.writeBytes(fileBytes)
+                                            arrays!!.add(ListItem("Image", file.path))
+                                            updateList()
+                                            call.respondFile(getHtmlFile(applicationContext))
+
+                                        } catch (e: Exception) {
+                                            e.printStackTrace()
+                                        }
+
+                                        Log.d("AKU", "files" + file)
+                                    }
                                 }
                             }
-                            }
-                    call.respond(HttpStatusCode.OK)
+                        }catch (e:Exception){
+                            e.printStackTrace()
+                        }
+                   // call.respondFile(getHtmlFile(applicationContext))
+                    //call.respond(HttpStatusCode.OK)
                     }
                     post("/video"){
                         val multipart=call.receiveMultipart()
@@ -274,6 +281,7 @@ class MainActivity : AppCompatActivity() {
                                         file.writeBytes(fileBytes)
                                         arrays!!.add(ListItem("Video", file.path))
                                         updateList()
+                                        call.respondFile(getHtmlFile(applicationContext))
 
                                     } catch (e: Exception) {
                                         e.printStackTrace()

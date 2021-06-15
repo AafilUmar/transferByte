@@ -1,15 +1,47 @@
 <!DOCTYPE html>
-<html>
-<body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+</head>
+<body style="background-color: #90a4ae;border: #000;">
+    <div style="background-color: #00acc1;">
+        <h1 style="text-align: center;color: #ffffff;">TransferByte</h1>
+    </div>
+    <h2 style="text-align: center;color: white;background-color:darkcyan;">Text</h2>
+    <div style="margin-left: 35%;margin-top: 30px;">
+        
+        <form action="/text" method="post">
+            <input style="size: 100px;" type="text" id="text" name="text">
+            <input type="submit" value="Send"/>
+        </form>
+        </div>
 
-<h1>Send Some Text</h1>
-
-
-<form action="/text" method="post">
-    <label for="text">Text:</label><br>
-    <input type="text" id="text" name="text"><br>
-    <input type="submit" value="Submit">
+        <h2 style="text-align: center;color: white;background-color:darkcyan;">Image</h2>
+    <div style="margin-left: 35%;margin-top: 50px;margin-bottom: 30px;">
+    <form enctype="multipart/form-data" action="/image" method="post" class="putImages">
+   <input name="media[]" type="file" multiple accept="image/*"/>
+   <input class="button" type="submit" alt="Upload" value="Send" />
 </form>
-
+        
+        <!-- <form action="/image" method="post" enctype="multipart/form-data">
+            <input  id="image" type="file" accept="image/*"/>
+            <input type="submit" value="Send"/>
+        </form> -->
+        </div>
+        <h2 style="text-align: center;color: white;background-color:darkcyan;">Video</h2>
+    <div style="margin-left: 35%;margin-top: 50px;margin-bottom: 30px;">
+        
+        <form enctype="multipart/form-data" action="/video" method="post" class="putImages">
+            <input name="media[]" type="file" multiple accept="video/*"/>
+            <input class="button" type="submit" alt="Upload" value="Send" />
+         </form>
+        </form>
+        </div>
 </body>
+<script></script>
 </html>
